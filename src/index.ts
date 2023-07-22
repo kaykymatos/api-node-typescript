@@ -1,3 +1,6 @@
 import { server } from "./server/appserver";
 
-server.listen(3333,()=>{console.log("Teste rodando")})
+server.listen(3333, () => {
+    console.log("Teste rodando");
+});
+
