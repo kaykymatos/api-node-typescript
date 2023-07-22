@@ -1,5 +1,5 @@
-import * as cities from './citycontroller';
+import * as cidades from './cidadesController';
 
 export const CytiController = {
-  ...cities,
+  ...cidades,
 };
