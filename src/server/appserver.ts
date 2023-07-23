@@ -3,7 +3,6 @@ import './shared/services/translationsYup';
 import { router } from './routes';
 import 'dotenv/config';
 
-
 const server = express();
 
 server.use(express.json());

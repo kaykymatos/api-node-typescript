@@ -8,6 +8,10 @@ router.get('/', (req, res) => {
   return res.status(StatusCodes.OK).json();
 });
 
-router.post('/cidades/create', CytiController.create);
+router.post(
+  '/cidades/create',
+  CytiController.validationBody,
+  CytiController.create
+);
 
 export { router };
