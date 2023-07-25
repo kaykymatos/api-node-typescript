@@ -1,29 +1,47 @@
 import { Request, Response } from 'express';
-import * as yup from 'yup';
-import { validation } from '../shared/middleware';
+import { StatusCodes } from 'http-status-codes';
 
 interface ICidade {
   nome: string;
-  estado: string;
 }
-interface IFilter {
-  filter?: string;
+interface IQeryProps {
+  page?: number;
+  limit?: number;
+  fillter?: string;
 }
-export const validationBody = validation((getSchema) => ({
-  body: getSchema<ICidade>(
-    yup.object().shape({
-      nome: yup.string().required().min(3),
-      estado: yup.string().required().min(3),
-    })
-  ),
-  query: getSchema<IFilter>(
-    yup.object().shape({
-      filter: yup.string().required().min(3),
-    })
-  ),
-}));
-
 export const create = async (req: Request<{}, {}, ICidade>, res: Response) => {
-  console.log(req.body.nome);
-  return res.send('create');
+  return res.status(StatusCodes.INTERNAL_SERVER_ERROR).send('Não implementado');
+};
+
+export const getAll = async (
+  req: Request<{}, {}, {}, IQeryProps>,
+  res: Response
+) => {
+  console.log(req.query);
+  return res.status(StatusCodes.INTERNAL_SERVER_ERROR).send('Não implementado');
+};
+
+export const getById = async (
+  req: Request<{}, {}, {}, IQeryProps>,
+  res: Response
+) => {
+  console.log(req.query);
+  return res.status(StatusCodes.INTERNAL_SERVER_ERROR).send('Não implementado');
+};
+
+export const updateById = async (
+  req: Request<{}, {}, {}, IQeryProps>,
+  res: Response
+) => {
+  console.log(req.params);
+  console.log(req.body);
+  return res.status(StatusCodes.INTERNAL_SERVER_ERROR).send('Não implementado');
+};
+
+export const deleteById = async (
+  req: Request<{}, {}, {}, IQeryProps>,
+  res: Response
+) => {
+  console.log(req.params);
+  return res.status(StatusCodes.INTERNAL_SERVER_ERROR).send('Não implementado');
 };
