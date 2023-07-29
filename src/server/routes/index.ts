@@ -1,37 +1,35 @@
 import { Router } from 'express';
-import { StatusCodes } from 'http-status-codes';
-import { CytiController } from '../controllers';
-import { CidadesValidation } from '../validation';
+import { CidadesController } from '../controllers';
 
 const router = Router();
 
 router.post(
   '/cidades',
-  CidadesValidation.validationBody,
-  CytiController.create
+  CidadesController.validationBody,
+  CidadesController.Create
 );
 
 router.get(
   '/cidades',
-  CidadesValidation.getAllValidation,
-  CytiController.getAll
+  CidadesController.getAllValidation,
+  CidadesController.GetAll
 );
 
 router.get(
   '/cidades/:id',
-  CidadesValidation.getByIdValidation,
-  CytiController.getById
+  CidadesController.getByIdValidation,
+  CidadesController.GetById
 );
 
 router.put(
   '/cidades/:id',
-  CidadesValidation.updateByIdValidation,
-  CytiController.updateById
+  CidadesController.updateByIdValidation,
+  CidadesController.UpdateById
 );
 
 router.delete(
   '/cidades/:id',
-  CidadesValidation.deleteValidation,
-  CytiController.deleteById
+  CidadesController.deleteValidation,
+  CidadesController.DeleteById
 );
 export { router };
