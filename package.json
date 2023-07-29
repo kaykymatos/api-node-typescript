@@ -7,7 +7,7 @@
     "test": "jest",
     "dev": "ts-node-dev ./src/index.ts",
     "clean": "npx prettier ./src --write",
-    "build":"tsc"
+    "build": "tsc"
   },
   "author": "Kayky Matos Santana",
   "license": "MIT",
@@ -16,6 +16,7 @@
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
     "jest": "^29.6.1",
+    "knex": "^2.5.1",
     "ts-jest": "^29.1.1",
     "yup": "^1.2.0"
   },
@@ -26,8 +27,12 @@
     "@typescript-eslint/eslint-plugin": "^6.1.0",
     "@typescript-eslint/parser": "^6.1.0",
     "eslint": "^8.45.0",
+    "sqlite": "^5.0.1",
     "supertest": "^6.3.3",
     "ts-node-dev": "^2.0.0",
     "typescript": "^5.1.6"
+  },
+  "engines": {
+    "node": "18.x"
   }
 }
