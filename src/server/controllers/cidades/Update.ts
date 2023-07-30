@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 import { StatusCodes } from 'http-status-codes';
 import * as yup from 'yup';
 import { validation } from '../../shared/middleware';
+import { ICidades } from '../../database/models';
 
 interface IQeryProps {
   page?: number;
@@ -12,11 +13,9 @@ interface IQeryProps {
 interface IParamProps {
   id?: number;
 }
-interface IBodyeProps {
-  nome: string;
-}
+interface IBodyProps extends Omit<ICidades, 'id'> {}
 export const updateByIdValidation = validation((getSchema) => ({
-  body: getSchema<IBodyeProps>(
+  body: getSchema<IBodyProps>(
     yup.object().shape({
       nome: yup.string().required().min(3),
     })
