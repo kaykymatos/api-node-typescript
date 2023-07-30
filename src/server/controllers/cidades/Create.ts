@@ -3,6 +3,7 @@ import { StatusCodes } from 'http-status-codes';
 import { validation } from '../../shared/middleware';
 import * as yup from 'yup';
 import { ICidades } from '../../database/models';
+import { CidadesProvider } from '../../database/providers/cidades';
 
 interface IBodyProps extends Omit<ICidades, 'id'> {}
 export const validationBody = validation((getSchema) => ({
@@ -16,6 +17,13 @@ export const Create = async (
   req: Request<{}, {}, IBodyProps>,
   res: Response
 ) => {
-  console.log(req.body);
-  return res.status(StatusCodes.INTERNAL_SERVER_ERROR).send('Não implementado');
+  const result = await CidadesProvider.Create(req.body);
+  if (result instanceof Error) {
+    return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
+      error: {
+        default: result.message,
+      },
+    });
+  }
+  return res.status(StatusCodes.CREATED).json(result);
 };
