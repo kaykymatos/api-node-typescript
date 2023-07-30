@@ -2,10 +2,10 @@ import { Request, Response } from 'express';
 import { StatusCodes } from 'http-status-codes';
 import { validation } from '../../shared/middleware';
 import * as yup from 'yup';
-import { ICidades } from '../../database/models';
+import { ICidade } from '../../database/models';
 import { CidadesProvider } from '../../database/providers/cidades';
 
-interface IBodyProps extends Omit<ICidades, 'id'> {}
+interface IBodyProps extends Omit<ICidade, 'id'> {}
 export const validationBody = validation((getSchema) => ({
   body: getSchema<IBodyProps>(
     yup.object().shape({
