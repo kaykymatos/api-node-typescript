@@ -7,7 +7,13 @@
     "test": "jest",
     "dev": "ts-node-dev ./src/index.ts",
     "clean": "npx prettier ./src --write",
-    "build": "tsc"
+    "build": "tsc",
+    "knex:migration":"npx knex --knexfile ./src/server/database/knex/enviroment.ts migrate:make",
+    "knex:up":"npx knex --knexfile ./src/server/database/knex/enviroment.ts migrate:latest",
+    "knex:rollback":"npx knex --knexfile ./src/server/database/knex/enviroment.ts migrate:rollback",
+    "knex:rollbackall":"npx knex --knexfile ./src/server/database/knex/enviroment.ts migrate:rollback --all",
+    "knex:seed":"npx knex --knexfile ./src/server/database/knex/enviroment.ts seed:run"
+
   },
   "author": "Kayky Matos Santana",
   "license": "MIT",
@@ -26,8 +32,8 @@
     "@types/supertest": "^2.0.12",
     "@typescript-eslint/eslint-plugin": "^6.1.0",
     "@typescript-eslint/parser": "^6.1.0",
+    "sqlite3": "^5.1.6",
     "eslint": "^8.45.0",
-    "sqlite": "^5.0.1",
     "supertest": "^6.3.3",
     "ts-node-dev": "^2.0.0",
     "typescript": "^5.1.6"
