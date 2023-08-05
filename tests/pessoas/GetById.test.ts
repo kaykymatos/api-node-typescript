@@ -1,16 +1,20 @@
 import { StatusCodes } from 'http-status-codes';
 import { testServer } from '../jest.setup';
 
-
 describe('Pessoas - GetById', () => {
+  let cidadeId: number | undefined = undefined;
+  beforeAll(async () => {
+    const resCidade = await testServer
+      .post('/cidades')
+      .send({ nome: 'Caxias do Sul' });
+    cidadeId = resCidade.body;
+  });
   it('Busca registro por id', async () => {
-    const res1 = await testServer
-      .post('/pessoas')
-      .send({
-        nomeCompleto: 'teste novo usuario',
-        email: 'email@gmail.com',
-        cidadeId: 1,
-      });
+    const res1 = await testServer.post('/pessoas').send({
+      nomeCompleto: 'teste novo usuario',
+      email: 'email@gmail.com',
+      cidadeId
+    });
 
     expect(res1.statusCode).toEqual(StatusCodes.CREATED);
 

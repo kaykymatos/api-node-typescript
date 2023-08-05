@@ -2,7 +2,13 @@ import { StatusCodes } from 'http-status-codes';
 import { testServer } from '../jest.setup';
 
 describe('Pessoas - DeleteById', () => {
-
+  let cidadeId: number | undefined = undefined;
+  beforeAll(async () => {
+    const resCidade = await testServer
+      .post('/cidades')
+      .send({ nome: 'Caxias do Sul' });
+    cidadeId = resCidade.body;
+  });
   it('Apaga registro', async () => {
 
     const res1 = await testServer
@@ -10,7 +16,7 @@ describe('Pessoas - DeleteById', () => {
       .send({
         nomeCompleto: 'teste novo usuario',
         email: 'email@gmail.com',
-        cidadeId: 1,
+        cidadeId
       });
 
     expect(res1.statusCode).toEqual(StatusCodes.CREATED);
