@@ -28,7 +28,7 @@ export const DeleteById = async (req: Request<IParamProps>, res: Response) => {
       },
     });
   }
-  const result =await CidadesProvider.deleteById(req.params.id);
+  const result = await CidadesProvider.deleteById(req.params.id);
   if (result instanceof Error) {
     return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
       error: {
