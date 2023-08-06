@@ -1,15 +1,8 @@
 import { Request, Response } from 'express';
 import { StatusCodes } from 'http-status-codes';
 import * as yup from 'yup';
-import { validation } from '../../shared/middleware';
-import { CidadesProvider } from '../../database/providers/cidades';
 import { PessoasProvider } from '../../database/providers/pessoas';
-
-interface IQeryProps {
-  page?: number;
-  limit?: number;
-  fillter?: string;
-}
+import { validation } from '../../shared/middleware';
 
 interface IParamProps {
   id?: number;
