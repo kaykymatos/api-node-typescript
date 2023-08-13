@@ -9,5 +9,5 @@ export const PessoasController = {
   ...deleteById,
   ...getAll,
   ...getById,
-  ...updateById
+  ...updateById,
 };

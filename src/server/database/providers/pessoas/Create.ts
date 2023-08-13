@@ -2,7 +2,9 @@ import { ETableNames } from '../../ETableNames';
 import { Knex } from '../../knex';
 import { ICidade, IPessoa } from '../../models';
 
-export const create = async (pessoa: Omit<IPessoa, 'id'>): Promise<number | Error> => {
+export const create = async (
+  pessoa: Omit<IPessoa, 'id'>
+): Promise<number | Error> => {
   try {
     const [{ count }] = await Knex(ETableNames.cidade)
       .where('id', '=', pessoa.cidadeId)
@@ -12,8 +14,9 @@ export const create = async (pessoa: Omit<IPessoa, 'id'>): Promise<number | Erro
       return new Error('A cidade usada no cadastro não foi encontrada');
     }
 
-
-    const [result] = await Knex(ETableNames.pessoa).insert(pessoa).returning('id');
+    const [result] = await Knex(ETableNames.pessoa)
+      .insert(pessoa)
+      .returning('id');
     if (typeof result === 'object') {
       return result.id;
     } else if (typeof result === 'number') {
