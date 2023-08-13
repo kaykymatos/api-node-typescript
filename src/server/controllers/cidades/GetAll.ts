@@ -35,13 +35,13 @@ export const GetAll = async (
 
   if (result instanceof Error) {
     return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
-      error: {
+      errors: {
         default: result.message,
       },
     });
   } else if (count instanceof Error) {
     return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
-      error: {
+      errors: {
         default: count.message,
       },
     });

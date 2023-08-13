@@ -27,6 +27,6 @@ describe('Pessoas - GetById', () => {
     const res1 = await testServer.get('/pessoas/99999').send();
 
     expect(res1.statusCode).toEqual(StatusCodes.INTERNAL_SERVER_ERROR);
-    expect(res1.body).toHaveProperty('error.default');
+    expect(res1.body).toHaveProperty('errors.default');
   });
 });

@@ -20,7 +20,7 @@ export const Create = async (
   const result = await CidadesProvider.Create(req.body);
   if (result instanceof Error) {
     return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
-      error: {
+      errors: {
         default: result.message,
       },
     });

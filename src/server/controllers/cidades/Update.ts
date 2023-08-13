@@ -34,7 +34,7 @@ export const UpdateById = async (
 ) => {
   if (!req.params.id) {
     return res.status(StatusCodes.BAD_REQUEST).json({
-      error: {
+      errors: {
         default: 'O parametro "Id" precisa ser maior que 0!',
       },
     });
@@ -42,7 +42,7 @@ export const UpdateById = async (
   const result = await CidadesProvider.updateById(req.params.id, req.body);
   if (result instanceof Error) {
     return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
-      error: {
+      errors: {
         default: result.message,
       },
     });

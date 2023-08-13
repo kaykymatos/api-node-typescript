@@ -55,7 +55,7 @@ describe('Pessoas - Create', () => {
         nomeCompleto: 'duplicado',
       });
     expect(res2.statusCode).toEqual(StatusCodes.INTERNAL_SERVER_ERROR);
-    expect(res2.body).toHaveProperty('error.default');
+    expect(res2.body).toHaveProperty('errors.default');
   });
   it('Tenta criar registro com nomeCompleto muito curto', async () => {
     const res1 = await testServer

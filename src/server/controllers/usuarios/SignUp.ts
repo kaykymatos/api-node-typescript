@@ -22,7 +22,7 @@ export const signUp = async (
   const result = await UsuariosProvider.Create(req.body);
   if (result instanceof Error) {
     return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
-      error: {
+      errors: {
         default: result.message,
       },
     });

@@ -24,7 +24,7 @@ export const deleteValidation = validation((getSchema) => ({
 export const DeleteById = async (req: Request<IParamProps>, res: Response) => {
   if (!req.params.id) {
     return res.status(StatusCodes.BAD_REQUEST).json({
-      error: {
+      errors: {
         default: 'O parametro "Id" precisa ser maior que 0!',
       },
     });
@@ -32,7 +32,7 @@ export const DeleteById = async (req: Request<IParamProps>, res: Response) => {
   const result = await PessoasProvider.deleteById(req.params.id);
   if (result instanceof Error) {
     return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
-      error: {
+      errors: {
         default: result.message,
       },
     });
