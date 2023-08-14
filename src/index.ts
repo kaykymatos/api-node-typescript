@@ -1,4 +1,3 @@
-import knex from 'knex';
 import { server } from './server/appserver';
 import { Knex } from './server/database/knex';
 
