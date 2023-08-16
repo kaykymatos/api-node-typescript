@@ -7,7 +7,7 @@
     "test": "jest",
     "dev": "ts-node-dev ./src/index.ts",
     "clean": "npx prettier ./src --write",
-    "postinstall": "tsc",
+    "preproduction": "tsc",
     "production": "node ./build/index.js",
     "knex:migration": "npx knex --knexfile ./src/server/database/knex/enviroment.ts migrate:make",
     "knex:up": "npx knex --knexfile ./src/server/database/knex/enviroment.ts migrate:latest",
